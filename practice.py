@@ -22,6 +22,22 @@ if uploaded_file:
     df_grouped = df.groupby(by=[groupby_column], as_index=False)[output_columns].sum()
     st.dataframe(df_grouped)
 
+    #copy and paste project
+    from openpyxl import load_workbook
+
+wb = load_workbook('kpi_day.xlsx')
+sheet1 = wb['Report']
+sheet2 = wb['Target']
+
+# for i in range(10, 15):
+#     for j in range(2, 3):
+#         sheet2.cell(row=5, column=6).value = sheet1.cell(row=i, column=j).value
+
+for i in range(10, 20):
+    for j in range(3, 4):
+        sheet2.cell(row=i-6, column=j).value = sheet1.cell(row=i, column=j).value
+
+wb.save('kpi_master.xlsx')
 
 
 
