@@ -39,6 +39,26 @@ for i in range(10, 20):
 
 wb.save('kpi_master.xlsx')
 
+#GUI
+import PySimpleGUI as sg
+
+layout = [
+    [sg.Text("Input File:"), sg.Input(key="-IN-"), sg.FilesBrowse()],
+    [sg.Text("Output File"), sg.Input(key="-OUT-"), sg.FilesBrowse()],
+    [sg.Exit(), sg.Button("Convert To Csv")],
+    ]
+
+window = sg.Window("Pull Data Project", layout)
+
+while True:
+    event, values = window.read()
+    print(event,values)
+    if event in (sg.WINDOW_CLOSED,"EXIT"):
+        break
+    if event == "Convert To Csv":
+        sg.popup_error("Not yet implemented")
+    window.close()
+
 
 
 
